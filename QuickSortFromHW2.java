@@ -1,10 +1,10 @@
 import java.util.Arrays;
 import java.util.Random;
 
-
 public class QuickSortFromHW2 {
 
     public static void quickSort(int[] A, int start, int end) {
+        //Initial call that recursively quicksorts smaller pieces of the given array A until it is sorted
         if (start < end) {
             int p = choosePivotIndex(A, start, end);
             int r = partition(A, start, end, p);
@@ -15,13 +15,14 @@ public class QuickSortFromHW2 {
     }
 
     private static int choosePivotIndex(int[] A, int start, int end) {
-        // Choose pivot index, for simplicity, just use the last element
+        // Choose a random index within the valid range
         Random random = new Random();
-        int randomPivotElement = A[random.nextInt(A.length)];
-        return randomPivotElement;
+        int randomPivotIndex = random.nextInt(end - start + 1) + start;
+        return randomPivotIndex;
     }
 
     private static int partition(int[] A, int start, int end, int p) {
+        //Holds the value of the pivot index and sorts the values as needed
         int pivot = A[p];
         int[] AL = new int[end - start + 1];
         int[] AR = new int[end - start + 1];
